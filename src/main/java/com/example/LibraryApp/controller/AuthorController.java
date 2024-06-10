@@ -1,11 +1,15 @@
 package com.example.LibraryApp.controller;
 
-import com.example.LibraryApp.entity.Author;
+import com.example.LibraryApp.domain.dto.AuthorDto;
+import com.example.LibraryApp.domain.dto.BookDto;
+import com.example.LibraryApp.domain.entity.Author;
 import com.example.LibraryApp.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/authors")
@@ -19,8 +23,13 @@ public class AuthorController {
     }
 
     @GetMapping(params = "id")
-    public ResponseEntity<Author> getAuthorById(@RequestParam("id") Long id) {
+    public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
         return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(params = "name")
+    public ResponseEntity<List<AuthorDto>> findAuthorByName(@RequestParam("name") String name) {
+        return new ResponseEntity<>(authorService.getAuthorByName(name), HttpStatus.OK);
     }
 
     @PostMapping

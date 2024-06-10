@@ -1,9 +1,7 @@
 package com.example.LibraryApp.repository;
 
-import com.example.LibraryApp.entity.Author;
+import com.example.LibraryApp.domain.entity.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface AuthorRepository extends JpaRepository<Author, Long> {
 }

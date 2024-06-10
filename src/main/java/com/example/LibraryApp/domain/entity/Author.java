@@ -1,4 +1,4 @@
-package com.example.LibraryApp.entity;
+package com.example.LibraryApp.domain.entity;
 
 import jakarta.persistence.*;
 
