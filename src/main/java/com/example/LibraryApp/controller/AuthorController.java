@@ -4,8 +4,13 @@ import com.example.LibraryApp.domain.dto.AuthorDto;
 import com.example.LibraryApp.domain.dto.BookDto;
 import com.example.LibraryApp.domain.entity.Author;
 import com.example.LibraryApp.service.AuthorService;
+import com.example.LibraryApp.service.impl.AuthorServiceImpl;
+import io.micrometer.common.util.internal.logging.AbstractInternalLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +21,7 @@ import java.util.List;
 public class AuthorController {
 
     private final AuthorService authorService;
+    private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImpl.class);
 
     @Autowired
     public AuthorController(AuthorService authorService) {
@@ -39,6 +45,7 @@ public class AuthorController {
 
     @PutMapping(params = "id")
     public ResponseEntity<Author> updateAuthor(@RequestParam("id") Long id, @RequestBody Author author) {
+        logger.debug("Received author update request: {}", author);
         return new ResponseEntity<>(authorService.updateAuthor(id, author), HttpStatus.OK);
     }
 

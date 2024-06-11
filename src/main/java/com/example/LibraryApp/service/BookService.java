@@ -14,4 +14,7 @@ public interface BookService {
     void deleteBook(Long id);
 
     List<BookDto> getBooksByTitle(String title);
+
+
+    Book save(Book book);
 }

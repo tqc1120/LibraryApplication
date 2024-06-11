@@ -1,7 +1,9 @@
 package com.example.LibraryApp.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,8 +16,9 @@ public class Author {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+//    @JsonIgnore
+    @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Book> books = new HashSet<>();
 
     public Long getAuthor_id() {
         return author_id;
