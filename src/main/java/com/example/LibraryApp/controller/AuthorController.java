@@ -20,18 +20,18 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorController {
 
-//    private final AuthorService authorService;
-//    private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImpl.class);
-//
-//    @Autowired
-//    public AuthorController(AuthorService authorService) {
-//        this.authorService = authorService;
-//    }
-//
-//    @GetMapping(params = "id")
-//    public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
-//        return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
-//    }
+    private final AuthorService authorService;
+    private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImpl.class);
+
+    @Autowired
+    public AuthorController(AuthorService authorService) {
+        this.authorService = authorService;
+    }
+
+    @GetMapping(params = "id")
+    public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
+        return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
+    }
 //
 //    @GetMapping(params = "name")
 //    public ResponseEntity<List<AuthorDto>> findAuthorByName(@RequestParam("name") String name) {

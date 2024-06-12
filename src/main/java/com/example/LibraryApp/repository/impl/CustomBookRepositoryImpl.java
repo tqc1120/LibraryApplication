@@ -1,13 +1,13 @@
-package com.example.LibraryApp.repository.impl;
-
-
-import com.example.LibraryApp.domain.entity.Book;
-import com.example.LibraryApp.repository.CustomBookRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+//package com.example.LibraryApp.repository.impl;
+//
+//
+//import com.example.LibraryApp.domain.entity.Book;
+//import com.example.LibraryApp.repository.CustomBookRepository;
+//import jakarta.persistence.EntityManager;
+//import jakarta.persistence.PersistenceContext;
+//import jakarta.persistence.Query;
+//import jakarta.persistence.TypedQuery;
+//import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface AuthorService {
-//    AuthorDto getAuthorById(Long id);
+    AuthorDto getAuthorById(Long id);
 //    List<AuthorDto> getAuthorByName(String name);
 //    AuthorDto createAuthor(AuthorDto authorDto);
 //    AuthorDto updateAuthor(Long id, AuthorDto authorDto);
