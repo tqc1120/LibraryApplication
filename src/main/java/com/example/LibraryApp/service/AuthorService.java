@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface AuthorService {
     AuthorDto getAuthorById(Long id);
-//    List<AuthorDto> getAuthorByName(String name);
+    List<AuthorDto> getAuthorsByName(String name);
 //    AuthorDto createAuthor(AuthorDto authorDto);
 //    AuthorDto updateAuthor(Long id, AuthorDto authorDto);
 //    void deleteAuthor(Long id);

@@ -37,6 +37,12 @@ public class AuthorServiceImpl implements AuthorService {
         return mapToAuthorDto(author);
     }
 
+    @Override
+    public List<AuthorDto> getAuthorsByName(String name) {
+        List<Author> authors = authorRepository.getAuthorsByName(name);
+        return authors.stream().map(this::mapToAuthorDto).collect(Collectors.toList());
+    }
+
     // mappers
     private AuthorDto mapToAuthorDto(Author author) {
         AuthorDto dto = new AuthorDto();

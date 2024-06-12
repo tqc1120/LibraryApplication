@@ -1,5 +1,6 @@
 package com.example.LibraryApp.controller;
 
+import com.example.LibraryApp.domain.dto.AuthorDto;
 import com.example.LibraryApp.domain.dto.BookDto;
 import com.example.LibraryApp.domain.entity.Book;
 import com.example.LibraryApp.service.BookService;
@@ -26,5 +27,10 @@ public class BookController {
     @GetMapping(params = "id")
     public ResponseEntity<BookDto> getBookById(@RequestParam("id")  Long id) {
         return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(params = "title")
+    public List<BookDto> getBooksByTitle(@RequestParam("title") String title) {
+        return bookService.getBooksByTitle(title);
     }
 }

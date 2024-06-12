@@ -36,6 +36,12 @@ public class BookServiceImpl implements BookService {
         return mapToBookDto(book);
     }
 
+    @Override
+    public List<BookDto> getBooksByTitle(String title) {
+        List<Book> books = bookRepository.findByTitle(title);
+        return books.stream().map(this::mapToBookDto).collect(Collectors.toList());
+    }
+
     //mappers
     private BookDto mapToBookDto(Book book) {
         BookDto dto = new BookDto();

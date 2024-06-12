@@ -32,4 +32,9 @@ public class AuthorController {
     public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
         return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
     }
+
+    @GetMapping(params = "name")
+    public List<AuthorDto> getAuthorsByName(@RequestParam("name") String name) {
+        return authorService.getAuthorsByName(name);
+    }
 }

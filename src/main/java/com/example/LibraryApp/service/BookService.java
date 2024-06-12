@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface BookService {
     BookDto getBookById(Long id);
-//    List<BookDto> getBooksByTitle(String title);
+    List<BookDto> getBooksByTitle(String title);
 //    BookDto createBook(BookDto bookDto);
 //    BookDto updateBook(Long id, BookDto bookDto);
 //    void deleteBook(Long id);
