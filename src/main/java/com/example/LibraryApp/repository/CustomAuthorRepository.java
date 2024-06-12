@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface CustomAuthorRepository {
-    List<Author> getAuthorByName(String name);
-    boolean existsByName(String name);
-}
+//@Repository
+//public interface CustomAuthorRepository {
+//    List<Author> getAuthorByName(String name);
+//    boolean existsByName(String name);
+//}

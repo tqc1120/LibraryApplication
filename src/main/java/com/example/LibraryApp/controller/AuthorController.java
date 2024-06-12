@@ -20,38 +20,38 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorController {
 
-    private final AuthorService authorService;
-    private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImpl.class);
-
-    @Autowired
-    public AuthorController(AuthorService authorService) {
-        this.authorService = authorService;
-    }
-
-    @GetMapping(params = "id")
-    public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
-        return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
-    }
-
-    @GetMapping(params = "name")
-    public ResponseEntity<List<AuthorDto>> findAuthorByName(@RequestParam("name") String name) {
-        return new ResponseEntity<>(authorService.getAuthorByName(name), HttpStatus.OK);
-    }
-
-    @PostMapping
-    public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
-        return new ResponseEntity<>(authorService.createAuthor(author), HttpStatus.CREATED);
-    }
-
-    @PutMapping(params = "id")
-    public ResponseEntity<Author> updateAuthor(@RequestParam("id") Long id, @RequestBody Author author) {
-        logger.debug("Received author update request: {}", author);
-        return new ResponseEntity<>(authorService.updateAuthor(id, author), HttpStatus.OK);
-    }
-
-    @DeleteMapping(params = "id")
-    public ResponseEntity<Void> deleteAuthor(@RequestParam("id") Long id) {
-        authorService.deleteAuthor(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    private final AuthorService authorService;
+//    private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImpl.class);
+//
+//    @Autowired
+//    public AuthorController(AuthorService authorService) {
+//        this.authorService = authorService;
+//    }
+//
+//    @GetMapping(params = "id")
+//    public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
+//        return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
+//    }
+//
+//    @GetMapping(params = "name")
+//    public ResponseEntity<List<AuthorDto>> findAuthorByName(@RequestParam("name") String name) {
+//        return new ResponseEntity<>(authorService.getAuthorByName(name), HttpStatus.OK);
+//    }
+//
+//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<AuthorDto> createAuthor(@RequestBody AuthorDto authorDto) {
+//        return new ResponseEntity<>(authorService.createAuthor(authorDto), HttpStatus.CREATED);
+//    }
+//
+//    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<AuthorDto> updateAuthor(@RequestParam("id") Long id, @RequestBody AuthorDto authorDto) {
+//        AuthorDto updatedAuthor = authorService.updateAuthor(id, authorDto);
+//        return new ResponseEntity<>(updatedAuthor, HttpStatus.OK);
+//    }
+//
+//    @DeleteMapping(params = "id")
+//    public ResponseEntity<Void> deleteAuthor(@RequestParam("id") Long id) {
+//        authorService.deleteAuthor(id);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 }

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface CustomBookRepository {
-    List<Book> getBooksByTitle(String title);
-    boolean existsByTitle(String title);
-}
+//@Repository
+//public interface CustomBookRepository {
+//    List<Book> getBooksByTitle(String title);
+//    boolean existsByTitle(String title);
+//}
