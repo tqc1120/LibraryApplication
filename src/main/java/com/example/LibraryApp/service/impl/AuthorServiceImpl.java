@@ -7,6 +7,7 @@ import com.example.LibraryApp.domain.entity.Book;
 import com.example.LibraryApp.exception.DuplicateResourceException;
 import com.example.LibraryApp.exception.ResourceNotFoundException;
 import com.example.LibraryApp.repository.AuthorRepository;
+import com.example.LibraryApp.repository.BookRepository;
 import com.example.LibraryApp.service.AuthorService;
 import com.example.LibraryApp.service.BookService;
 import org.slf4j.Logger;
@@ -15,20 +16,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
     @Autowired
     private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
 
     @Autowired
-    public AuthorServiceImpl(AuthorRepository authorRepository) {
+    public AuthorServiceImpl(AuthorRepository authorRepository, BookRepository bookRepository) {
+
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
     @Override
@@ -46,6 +47,12 @@ public class AuthorServiceImpl implements AuthorService {
         return authors.stream().map(this::mapToAuthorDto).collect(Collectors.toList());
     }
 
+//    @Override
+//    public AuthorDto createAuthor(AuthorDto authorDto) {
+//        authorRepository.save(mapToAuthor(authorDto));
+//        return authorDto;
+//    }
+
     // mappers
     private AuthorDto mapToAuthorDto(Author author) {
         AuthorDto dto = new AuthorDto();
@@ -54,4 +61,33 @@ public class AuthorServiceImpl implements AuthorService {
         dto.setBooks(author.getBooks().stream().map(Book::getTitle).collect(Collectors.toSet()));
         return dto;
     }
+
+//    private Author mapToAuthor(AuthorDto authorDto) {
+//        Author author = new Author();
+//        author.setName(authorDto.getName());
+//
+//        if (authorDto.getBooks() != null && !authorDto.getBooks().isEmpty()) {
+//            Set<Book> books = new HashSet<>();
+//            for (String bookTitle : authorDto.getBooks()) {
+//                List<Book> new_books = bookRepository.findByTitle(bookTitle);
+//                // 1.
+//
+//                for (Book new_book : new_books) {
+//                    if (new_book == null) {
+//                        book = new Book();
+//                        book.setTitle(bookTitle);
+//                        book = bookRepository.save(book);
+//                    } else {
+//                        book = new_book.get();
+//                    }
+//                }
+//                books.add(book);
+//            }
+//            author.setBooks(books);
+//        } else {
+//            Set<Book> emptyBookList = new HashSet<>();
+//            author.setBooks(emptyBookList);
+//        }
+//        return author;
+//    }
 }
