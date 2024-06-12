@@ -27,27 +27,4 @@ public class BookController {
     public ResponseEntity<BookDto> getBookById(@RequestParam("id")  Long id) {
         return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.OK);
     }
-//
-//    @GetMapping(params = "title")
-//    public ResponseEntity<List<BookDto>> findBooksByTitle(@RequestParam("title") String title) {
-//        return new ResponseEntity<>(bookService.getBooksByTitle(title), HttpStatus.OK);
-//    }
-//
-//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<BookDto> createBook(@RequestBody BookDto bookDto) {
-//        return new ResponseEntity<>(bookService.createBook(bookDto), HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<BookDto> updateBook(@RequestParam("id") Long id, @RequestBody BookDto bookDto) {
-//        BookDto updatedBook = bookService.updateBook(id, bookDto);
-//        return new ResponseEntity<>(updatedBook, HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping(params = "id")
-//    public ResponseEntity<Void> deleteBook(@RequestParam("id")  Long id) {
-//        bookService.deleteBook(id);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
-
 }

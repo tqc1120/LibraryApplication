@@ -32,26 +32,4 @@ public class AuthorController {
     public ResponseEntity<AuthorDto> getAuthorById(@RequestParam("id") Long id) {
         return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
     }
-//
-//    @GetMapping(params = "name")
-//    public ResponseEntity<List<AuthorDto>> findAuthorByName(@RequestParam("name") String name) {
-//        return new ResponseEntity<>(authorService.getAuthorByName(name), HttpStatus.OK);
-//    }
-//
-//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<AuthorDto> createAuthor(@RequestBody AuthorDto authorDto) {
-//        return new ResponseEntity<>(authorService.createAuthor(authorDto), HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<AuthorDto> updateAuthor(@RequestParam("id") Long id, @RequestBody AuthorDto authorDto) {
-//        AuthorDto updatedAuthor = authorService.updateAuthor(id, authorDto);
-//        return new ResponseEntity<>(updatedAuthor, HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping(params = "id")
-//    public ResponseEntity<Void> deleteAuthor(@RequestParam("id") Long id) {
-//        authorService.deleteAuthor(id);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
 }
