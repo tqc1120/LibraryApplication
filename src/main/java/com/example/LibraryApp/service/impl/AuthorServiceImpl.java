@@ -40,6 +40,9 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<AuthorDto> getAuthorsByName(String name) {
         List<Author> authors = authorRepository.getAuthorsByName(name);
+        if (authors.isEmpty()) {
+            throw new ResourceNotFoundException("No authors found with the name: " + name);
+        }
         return authors.stream().map(this::mapToAuthorDto).collect(Collectors.toList());
     }
 

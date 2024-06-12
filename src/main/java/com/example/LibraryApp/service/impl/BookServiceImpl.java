@@ -39,6 +39,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDto> getBooksByTitle(String title) {
         List<Book> books = bookRepository.findByTitle(title);
+        if (books.isEmpty()) {
+            throw new ResourceNotFoundException("No books found with the title: " + title);
+        }
         return books.stream().map(this::mapToBookDto).collect(Collectors.toList());
     }
 
