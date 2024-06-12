@@ -17,8 +17,10 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Author> authors;
+//    @ManyToMany(mappedBy = "books")
+//    private Set<Author> authors;
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BookAuthor> bookAuthors;
 
     public Book(){
     }
@@ -39,11 +41,19 @@ public class Book {
         this.title = title;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+//    public Set<Author> getAuthors() {
+//        return authors;
+//    }
+//
+//    public void setAuthors(Set<Author> authors) {
+//        this.authors = authors;
+//    }
+
+    public Set<BookAuthor> getBookAuthors() {
+        return bookAuthors;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setBookAuthors(Set<BookAuthor> bookAuthors) {
+        this.bookAuthors = bookAuthors;
     }
 }

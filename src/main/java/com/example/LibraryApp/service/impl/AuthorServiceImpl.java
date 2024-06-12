@@ -7,6 +7,7 @@ import com.example.LibraryApp.domain.entity.Book;
 import com.example.LibraryApp.exception.DuplicateResourceException;
 import com.example.LibraryApp.exception.ResourceNotFoundException;
 import com.example.LibraryApp.repository.AuthorRepository;
+import com.example.LibraryApp.repository.BookAuthorRepository;
 import com.example.LibraryApp.repository.BookRepository;
 import com.example.LibraryApp.service.AuthorService;
 import com.example.LibraryApp.service.BookService;
@@ -24,12 +25,14 @@ public class AuthorServiceImpl implements AuthorService {
     @Autowired
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final BookAuthorRepository bookAuthorRepository;
 
     @Autowired
-    public AuthorServiceImpl(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public AuthorServiceImpl(AuthorRepository authorRepository, BookRepository bookRepository, BookAuthorRepository bookAuthorRepository) {
 
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.bookAuthorRepository = bookAuthorRepository;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class AuthorServiceImpl implements AuthorService {
         AuthorDto dto = new AuthorDto();
         dto.setAuthorId(author.getAuthor_id());
         dto.setName(author.getName());
-        dto.setBooks(author.getBooks().stream().map(Book::getTitle).collect(Collectors.toSet()));
+        dto.setBooks(author.getBookAuthors().stream().map(bookAuthor -> bookAuthor.getBook().getTitle()).collect(Collectors.toSet()));
         return dto;
     }
 

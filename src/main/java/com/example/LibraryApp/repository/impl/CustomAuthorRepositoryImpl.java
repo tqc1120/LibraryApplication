@@ -15,7 +15,7 @@ public class CustomAuthorRepositoryImpl implements CustomAuthorRepository {
 
     @Override
     public List<Author> getAuthorsByName(String name) {
-        String jpql = "SELECT a FROM Author a LEFT JOIN FETCH a.books WHERE a.name = :name";
+        String jpql = "SELECT a FROM Author a  WHERE a.name = :name";
         TypedQuery<Author> query = entityManager.createQuery(jpql, Author.class);
         query.setParameter("name", name);
         return query.getResultList();

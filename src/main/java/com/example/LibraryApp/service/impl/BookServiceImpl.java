@@ -50,7 +50,7 @@ public class BookServiceImpl implements BookService {
         BookDto dto = new BookDto();
         dto.setBookId(book.getBook_id());
         dto.setTitle(book.getTitle());
-        dto.setAuthors(book.getAuthors().stream().map(Author::getName).collect(Collectors.toSet()));
+        dto.setAuthors(book.getBookAuthors().stream().map(bookAuthor -> bookAuthor.getAuthor().getName()).collect(Collectors.toSet()));
         return dto;
     }
 

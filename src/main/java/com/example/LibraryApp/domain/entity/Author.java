@@ -17,13 +17,16 @@ public class Author {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "book_authors",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id")
-    )
-    private Set<Book> books;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "book_authors",
+//            joinColumns = @JoinColumn(name = "author_id"),
+//            inverseJoinColumns = @JoinColumn(name = "book_id")
+//    )
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BookAuthor> bookAuthors;
+
+//    private Set<Book> books;
 
     public Author() {
     }
@@ -44,11 +47,20 @@ public class Author {
         this.name = name;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+//    public Set<Book> getBooks() {
+//        return books;
+//    }
+//
+//    public void setBooks(Set<Book> books) {
+//        this.books = books;
+//    }
+
+
+    public Set<BookAuthor> getBookAuthors() {
+        return bookAuthors;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBookAuthors(Set<BookAuthor> bookAuthors) {
+        this.bookAuthors = bookAuthors;
     }
 }
