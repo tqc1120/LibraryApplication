@@ -29,6 +29,14 @@ public class BookAuthorId implements Serializable {
         return bookId;
     }
 
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

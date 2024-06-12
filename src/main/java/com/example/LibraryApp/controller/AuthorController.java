@@ -37,4 +37,9 @@ public class AuthorController {
     public List<AuthorDto> getAuthorsByName(@RequestParam("name") String name) {
         return authorService.getAuthorsByName(name);
     }
+
+    @PostMapping
+    public AuthorDto createAuthor(@RequestBody AuthorDto authorDto) {
+        return authorService.createAuthor(authorDto);
+    }
 }

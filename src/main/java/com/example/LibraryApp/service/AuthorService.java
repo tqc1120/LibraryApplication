@@ -10,7 +10,7 @@ import java.util.List;
 public interface AuthorService {
     AuthorDto getAuthorById(Long id);
     List<AuthorDto> getAuthorsByName(String name);
-//    AuthorDto createAuthor(AuthorDto authorDto);
+    AuthorDto createAuthor(AuthorDto authorDto);
 //    AuthorDto updateAuthor(Long id, AuthorDto authorDto);
 //    void deleteAuthor(Long id);
 }

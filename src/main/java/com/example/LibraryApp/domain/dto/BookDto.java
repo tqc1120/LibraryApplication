@@ -16,6 +16,11 @@ public class BookDto {
         this.authors = authors;
     }
 
+    public BookDto(String title, Set<String> authors) {
+        this.title = title;
+        this.authors = authors;
+    }
+
     public Long getBookId() {
         return bookId;
     }

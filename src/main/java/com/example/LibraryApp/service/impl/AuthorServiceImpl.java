@@ -4,6 +4,8 @@ import com.example.LibraryApp.domain.dto.AuthorDto;
 import com.example.LibraryApp.domain.dto.BookDto;
 import com.example.LibraryApp.domain.entity.Author;
 import com.example.LibraryApp.domain.entity.Book;
+import com.example.LibraryApp.domain.entity.BookAuthor;
+import com.example.LibraryApp.domain.entity.BookAuthorId;
 import com.example.LibraryApp.exception.DuplicateResourceException;
 import com.example.LibraryApp.exception.ResourceNotFoundException;
 import com.example.LibraryApp.repository.AuthorRepository;
@@ -50,11 +52,39 @@ public class AuthorServiceImpl implements AuthorService {
         return authors.stream().map(this::mapToAuthorDto).collect(Collectors.toList());
     }
 
-//    @Override
-//    public AuthorDto createAuthor(AuthorDto authorDto) {
-//        authorRepository.save(mapToAuthor(authorDto));
-//        return authorDto;
-//    }
+    @Override
+    public AuthorDto createAuthor(AuthorDto authorDto) {
+        if (authorRepository.getAuthorsByName(authorDto.getName()).size() > 0) {
+            throw new DuplicateResourceException("Author with name " + authorDto.getName() + " already exists");
+        }
+
+        Author author = new Author();
+
+        author.setName(authorDto.getName());
+        author = authorRepository.save(author);
+
+        if (authorDto.getBooks() != null && !authorDto.getBooks().isEmpty()) {
+            Set<BookAuthor> bookAuthors = new HashSet<>();
+            for (String bookTitle : authorDto.getBooks()) {
+                Optional<Book> optionalBook = bookRepository.findByTitle(bookTitle);
+                Book book = optionalBook.orElseGet(() -> {
+                    Book newBook = new Book();
+                    newBook.setTitle(bookTitle);
+                    return bookRepository.save(newBook);
+                });
+
+                BookAuthor bookAuthor = new BookAuthor();
+                bookAuthor.setId(new BookAuthorId(author.getAuthor_id(), book.getBook_id()));
+                bookAuthor.setAuthor(author);
+                bookAuthor.setBook(book);
+                bookAuthors.add(bookAuthor);
+            }
+            bookAuthorRepository.saveAll(bookAuthors);
+            author.setBookAuthors(bookAuthors);
+        }
+
+        return mapToAuthorDto(author);
+    }
 
     // mappers
     private AuthorDto mapToAuthorDto(Author author) {

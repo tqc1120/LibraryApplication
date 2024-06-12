@@ -29,4 +29,16 @@ public class BookAuthor {
     public Book getBook() {
         return book;
     }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setId(BookAuthorId id) {
+        this.id = id;
+    }
 }

@@ -10,6 +10,11 @@ public class AuthorDto {
     public AuthorDto() {
     }
 
+    public AuthorDto(String name, Set<String> books) {
+        this.name = name;
+        this.books = books;
+    }
+
     public AuthorDto(Long authorId, String name, Set<String> books) {
         this.authorId = authorId;
         this.name = name;
