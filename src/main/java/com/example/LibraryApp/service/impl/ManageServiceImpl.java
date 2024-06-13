@@ -76,6 +76,14 @@ public class ManageServiceImpl implements ManageService {
         bookAuthorRepository.deleteAllInBatch(bookAuthors);
     }
 
+    @Override
+    public AuthorDto updateAuthorName(Long id, String newName) {
+        Author author = authorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author not found"));
+        author.setName(newName);
+        authorRepository.save(author);
+        return mapToAuthorDto(author);
+    }
+
     private AuthorDto mapToAuthorDto(Author author) {
         AuthorDto dto = new AuthorDto();
         dto.setAuthorId(author.getAuthor_id());

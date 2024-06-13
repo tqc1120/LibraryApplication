@@ -36,4 +36,9 @@ public class AuthorController {
     public AuthorDto createAuthor(@RequestBody AuthorDto authorDto) {
         return manageService.createAuthor(authorDto);
     }
+
+    @PutMapping(params = "id")
+    public AuthorDto updateAuthorName(@RequestParam("id") Long id, @RequestBody String newName) {
+        return manageService.updateAuthorName(id, newName);
+    }
 }
