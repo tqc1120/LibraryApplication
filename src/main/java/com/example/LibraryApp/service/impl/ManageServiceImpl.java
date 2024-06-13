@@ -54,16 +54,13 @@ public class ManageServiceImpl implements ManageService {
                     return bookRepository.save(newBook);
                 });
 
-                BookAuthor bookAuthor = new BookAuthor();
-                bookAuthor.setId(new BookAuthorId(author.getAuthor_id(), book.getBook_id()));
-                bookAuthor.setAuthor(author);
-                bookAuthor.setBook(book);
+                BookAuthorId bookAuthorId = new BookAuthorId(author.getAuthor_id(), book.getBook_id());
+                BookAuthor bookAuthor = new BookAuthor(bookAuthorId, author, book);
                 bookAuthors.add(bookAuthor);
             }
             bookAuthorRepository.saveAll(bookAuthors);
             author.setBookAuthors(bookAuthors);
         }
-
         return mapToAuthorDto(author);
     }
 

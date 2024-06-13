@@ -34,15 +34,12 @@ public class SearchServiceTest {
 
     @Test
     void  testGetBookById() {
-        Author mockAuthor = new Author(1L, "Joshua Bloch");
         // Setup behavior
+        Author mockAuthor = new Author(1L, "Joshua Bloch");
         Book mockBook = new Book(1L, "Effective Java");
 
-        BookAuthor mockBookAuthor = new BookAuthor();
         BookAuthorId bookAuthorId = new BookAuthorId(1L, 1L);
-        mockBookAuthor.setId(bookAuthorId);
-        mockBookAuthor.setAuthor(mockAuthor);
-        mockBookAuthor.setBook(mockBook);
+        BookAuthor mockBookAuthor = new BookAuthor(bookAuthorId, mockAuthor, mockBook);
 
         mockBook.setBookAuthors(Set.of(mockBookAuthor));
         mockAuthor.setBookAuthors(Set.of(mockBookAuthor));

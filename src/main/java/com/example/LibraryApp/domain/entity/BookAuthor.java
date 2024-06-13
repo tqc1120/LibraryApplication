@@ -18,6 +18,15 @@ public class BookAuthor {
     @JoinColumn(name = "book_id", insertable = false, updatable = false)
     private Book book;
 
+    public BookAuthor() {
+    }
+
+    public BookAuthor(BookAuthorId id, Author author, Book book) {
+        this.id = id;
+        this.author = author;
+        this.book = book;
+    }
+
     public BookAuthorId getId() {
         return id;
     }
