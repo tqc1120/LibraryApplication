@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface AuthorRepository extends JpaRepository<Author, Long>, CustomAuthorRepository {
-    List<Author> findByName(String name);
+public interface AuthorRepository extends JpaRepository<Author, Long>, CustomAuthorRepository{
+    List<Author> getAuthorsByName(String name);
 }

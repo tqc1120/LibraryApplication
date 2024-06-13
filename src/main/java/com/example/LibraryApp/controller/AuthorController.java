@@ -15,7 +15,6 @@ import java.util.List;
 public class AuthorController {
     private final SearchService searchService;
     private final ManageService manageService;
-//    private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImpl.class);
 
     @Autowired
     public AuthorController(SearchService searchService, ManageService manageService) {

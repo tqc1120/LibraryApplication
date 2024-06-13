@@ -6,6 +6,7 @@ import com.example.LibraryApp.domain.entity.Book;
 import com.example.LibraryApp.domain.entity.BookAuthor;
 import com.example.LibraryApp.domain.entity.BookAuthorId;
 import com.example.LibraryApp.exception.DuplicateResourceException;
+import com.example.LibraryApp.exception.ResourceNotFoundException;
 import com.example.LibraryApp.repository.AuthorRepository;
 import com.example.LibraryApp.repository.BookAuthorRepository;
 import com.example.LibraryApp.repository.BookRepository;
@@ -64,6 +65,15 @@ public class ManageServiceImpl implements ManageService {
         }
 
         return mapToAuthorDto(author);
+    }
+
+    @Override
+    public void deleteBook(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book not found"));
+        bookRepository.deleteById(book.getBook_id());
+
+        Set<BookAuthor> bookAuthors = book.getBookAuthors();
+        bookAuthorRepository.deleteAllInBatch(bookAuthors);
     }
 
     private AuthorDto mapToAuthorDto(Author author) {

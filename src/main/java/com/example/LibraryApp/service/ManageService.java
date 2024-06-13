@@ -5,5 +5,5 @@ import com.example.LibraryApp.domain.dto.AuthorDto;
 public interface ManageService {
     AuthorDto createAuthor(AuthorDto authorDto);
 //    AuthorDto updateAuthor(Long id, AuthorDto authorDto);
-//    void deleteAuthor(Long id);
+    void deleteBook(Long bookId);
 }
