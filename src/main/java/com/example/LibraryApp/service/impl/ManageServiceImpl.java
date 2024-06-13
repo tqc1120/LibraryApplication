@@ -13,6 +13,7 @@ import com.example.LibraryApp.repository.BookRepository;
 import com.example.LibraryApp.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -20,6 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ManageServiceImpl implements ManageService {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
