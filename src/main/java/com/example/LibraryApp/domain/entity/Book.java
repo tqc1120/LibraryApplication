@@ -17,12 +17,15 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-//    @ManyToMany(mappedBy = "books")
-//    private Set<Author> authors;
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BookAuthor> bookAuthors;
 
     public Book(){
+    }
+
+    public Book(Long book_id, String title) {
+        this.book_id = book_id;
+        this.title = title;
     }
 
     public Long getBook_id() {
@@ -40,14 +43,6 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
-
-//    public Set<Author> getAuthors() {
-//        return authors;
-//    }
-//
-//    public void setAuthors(Set<Author> authors) {
-//        this.authors = authors;
-//    }
 
     public Set<BookAuthor> getBookAuthors() {
         return bookAuthors;

@@ -17,18 +17,15 @@ public class Author {
     @Column(nullable = false)
     private String name;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "book_authors",
-//            joinColumns = @JoinColumn(name = "author_id"),
-//            inverseJoinColumns = @JoinColumn(name = "book_id")
-//    )
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BookAuthor> bookAuthors;
 
-//    private Set<Book> books;
-
     public Author() {
+    }
+
+    public Author(Long author_id, String name) {
+        this.author_id = author_id;
+        this.name = name;
     }
 
     public Long getAuthor_id() {
@@ -46,15 +43,6 @@ public class Author {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public Set<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(Set<Book> books) {
-//        this.books = books;
-//    }
-
 
     public Set<BookAuthor> getBookAuthors() {
         return bookAuthors;
