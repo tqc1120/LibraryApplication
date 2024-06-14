@@ -130,6 +130,31 @@ LibraryApp is a Spring Boot application designed to manage a library system. It 
    curl -X PUT "http://localhost:port/authors?id=1" -H "Content-Type: application/json" -d '"Updated Name"'
    ```
 
+## Delete Book by ID
+
+**Endpoint:** `/books?id={id}`
+
+**Method:** `DELETE`
+
+**Description:** Deletes a book by its ID.
+
+### Request Parameters
+
+- `id` (required): The ID of the book to be deleted.
+
+### Responses
+
+- `200 OK`: Successfully deleted the book.
+- `404 Not Found`: Book not found.
+
+### Example Request
+
+To delete a book with the ID of 1, you can use the following `curl` command:
+
+```bash
+curl -X DELETE "http://localhost:port/books?id=1"
+```
+
 ## Testing
 ### Unit Tests
 
